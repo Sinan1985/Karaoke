@@ -1,0 +1,95 @@
+.mactive {
+    font-weight: bold; /* Highlight with bold text */
+    color: #0000DD !important; /* Highlight with a different color */
+    text-decoration: underline; /* Optional: underline the active link */
+}
+.minactive {
+    color: black; /* Normal link color */
+    text-decoration: none;
+}
+.welcome-container {
+    display: flex;
+    align-items: right; /* Vertically center the items */
+    direction: rtl; /* Ensure the links are right-to-left aligned */
+}
+
+.login-link {
+    padding-left: 050px; /* Push the login link to the right */
+
+}
+
+.sidenav {
+    height: auto; /* Let the height adjust based on content */
+    width: 100%; /* Set width to 100% to span across the top */
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0; /* Align to the left edge */
+    background-color: #666;
+    overflow-x: hidden;
+    padding-top: 20px;
+    text-align: right; /* Align content to the right */
+    direction: rtl; /* Ensure proper right-to-left alignment for Arabic */
+    display: flex; /* Use flexbox for horizontal layout */
+    justify-content: space-evenly; /* Distribute space evenly across the width */
+}
+.sidenav a {
+    padding:6px 8px 6px 16px;
+    text-decoration: none;
+    font-size:25px;
+    color: #ffffff;
+    display:block;
+    text-align: right; /* Align the links' text to the right */
+    direction: rtl; /* Ensure the links are right-to-left aligned */
+}
+
+.sidenav a:hover{
+    color:#f1f1f1;
+}
+
+.main{
+    margin-left:0px;
+    padding: 0px 10px;
+
+}
+.custom-right-margin {
+    margin-right: 100px; /* Adjust the value as needed */
+}
+.login-container {
+    margin-left:10px;
+}
+/* Make table rows stack vertically on small screens */
+@media screen and (max-width: 950px) {
+.welcome-container {
+    display: flex;
+    align-items: right; /* Vertically center the items */
+    direction: rtl; /* Ensure the links are right-to-left aligned */
+}
+
+.container {
+        max-width: 100%;
+    }
+    table {
+        width: 100%; /* Set the table width to 100% */
+    }
+
+    tr {
+
+        border-bottom: none;
+    }
+
+    th, td {
+        border: 1px solid black; /* Adjust border width and style as needed */
+
+    }
+
+}
+}
+
+h1 {
+    text-align: right;
+    direction: rtl;
+}
+
+
+
