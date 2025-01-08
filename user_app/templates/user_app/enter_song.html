@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Enter Song
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "user_app/enter_song.css"  %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div >
+        <div class="card-header text-align-right">
+            طلب اغنية
+        </div>
+        <div>
+            <form method="POST" action="{% url 'enter_song' %}">
+                {% csrf_token %}
+
+                <table class="table custom-margin">
+                     <tbody>
+                            <tr>
+                                <td class="wide-column">
+                                    <input type="text" name="sing_name"   class="styled-input" value="{{ sing_name }}">
+                                </td>
+                                <td class="narrow-column"> <span>:</span>
+                                      رابط او اسم الاغنية
+                                </td>
+                                </tr>
+                            <tr>
+                                <td class="wide-column">
+                                    <input type="text" name="user_name"  class="styled-input" value="{{ user_name }}" >
+                                </td>
+                                <td class="narrow-column">
+                                    <span>:</span>اسماء المشاركين
+                                </td>
+                            </tr>
+                     </tbody>
+                </table>
+                <button id="update_button"  enabled  type="submit" class="update-button">ارسال المشاركة</button>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

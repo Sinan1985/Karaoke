@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Songs List
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "user_app/enter_song.css"  %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div >
+    <div class="card-header text-align-right">
+        قائمة الاغاني
+        </div>
+
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="wide-column">رابط او اسم الاغنية</th>
+                        <th class="narrow-column"> اسماء المشاركين
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for song in songs %}
+                        <tr>
+                             <td class="wide-column">
+                                <a href="{{ song.sing_name }}" target="_blank" class="song-link">{{ song.sing_name }}</a>
+                             </td>
+                            <td class="wide-column">{{ song.user_name }}</td>
+
+
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+</div>
+    </div>
+
+{% endblock %}

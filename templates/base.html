@@ -1,0 +1,62 @@
+
+{% load static %}
+<link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}" >
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static "base.css" %}">
+
+
+	{% block css_files %} {% endblock %}
+</head>
+<body>
+   	<div class="sidenav">
+		<a href="{% url 'songs_list' %}" class="{% if request.resolver_match.url_name == 'songs_list' %}mactive{% else %}minactive{% endif %}">
+			طلبات الاغاني
+		</a>
+		<a href="{% url 'enter_song' %}" class="{% if request.resolver_match.url_name == 'enter_song' %}mactive{% else %}minactive{% endif %}">
+            طلب اغنية
+		</a>
+	</div>
+
+	<div id="content" name="content" class="main">
+
+
+			<div class="col-12"><br><br><br>
+				<div class="welcome-container dir="rtl"">
+				<h1 class="mt-2 custom-right-margin ">مساء كاريوكي
+
+				 <br>
+					مرحبا بكم </h1>
+				<div class="login-container">
+				{% if user.is_authenticated %}
+					<form action="{% url 'logout' %}" method="post">
+        				{% csrf_token %}
+        				<button type="submit" class="login-link" style="background: none; border: none; padding: 0; color: blue; text-decoration: underline; cursor: pointer;">Logout</button>
+    				</form>
+				{% else %}
+
+				{% endif %}
+				{% if user.is_authenticated %}
+  					<nav>
+    					<!-- Other navigation links... -->
+    					<a href="{% url 'change_password' %}">Change Password</a>
+  					</nav>
+				{% endif %}
+				</div>
+				</div>
+				<hr class="mt-0 mb-4">
+				{% block content %}
+				{% endblock %}
+
+			</div>
+
+	</div>
+
+</body>
+</html>

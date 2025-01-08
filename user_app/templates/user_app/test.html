@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Device Settings
+{% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "user_app/settings.css"  %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container" class="container">
+    <div class="card user-details-card">
+        <div class="card-header">
+            Device Settings
+        </div>
+        <div class="card-body">
+            <form method="POST" action="#">
+                {% csrf_token %}
+                <table class="table">
+                 <tbody>
+                        <tr>
+                            <th class="narrow-column">Device Number:</th>
+                            <td class="narrow-column"><input type="text" name="device_number"  class="styled-input" value="{{ device_number }}" {% if user.is_authenticated %} {% else %}disabled{% endif %}></td>
+                            <th ></th>
+                        </tr>
+                        <tr>
+                            <th >Time to Write:</th>
+                            <td><input type="number" name="time_to_write" class="styled-input" value="{{ time_to_write }}" {% if user.is_authenticated %} {% else %}disabled{% endif %}></td>
+                            <th class="narrow-column" >[Minutes]</th>
+                        </tr>
+                        <tr>
+                            <th>Sampling Rate:</th>
+                            <td><input type="number" name="sampling_rate" class="styled-input" value="{{ sampling_rate }}" {% if not user.is_authenticated %}disabled{% endif %}></td>
+                            <th>[Milliseconds]</th>
+                        </tr>
+                        <tr>
+                            <th>Admin Email:</th>
+                            <td><input type="text" name="admin_email" class="styled-input" value="{{ admin_email }}" {% if not user.is_authenticated %}disabled{% endif %}></td>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th>Average Simulated Temperature:</th>
+                            <td><input type="text" name="average_simulated_temperature" class="styled-input" value="{{ average_simulated_temperature }}" {% if not user.is_authenticated %}disabled{% endif %}></td>
+                            <th>[°C]</th>
+                        </tr>
+                        <tr>
+                            <th>Lower warning Limit:</th>
+                            <td><input type="text" name="lower_warning_limit" class="styled-input" value="{{ lower_warning_limit }}" {% if not user.is_authenticated %}disabled{% endif %}></td>
+                            <th>[°C]</th>
+                        </tr>
+                        <tr>
+                            <th>Upper warning limit:</th>
+                            <td><input type="text" name="upper_warning_limit" class="styled-input" value="{{ upper_warning_limit }}" {% if not user.is_authenticated %}disabled{% endif %}></td>
+                            <th>[°C]</th>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <button id="update_button"  {% if user.is_authenticated %} enabled  type="submit" class="update-button" {% else %}disabled class="update-button"  {% endif %}  >Update Settings</button>
+                {% if user.is_authenticated %}
+					<p>Enter new Settings and press 'Update Settings' to save the new settings</p>
+                {% else %}
+                <p>  to update settings.</p>
+                {% endif %}
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
